@@ -1,13 +1,25 @@
 package com.proyecto.poryectoMarketing.Model;
 
+import jakarta.persistence.*;
+
 import java.util.*;
 
+@Entity
+@Table(name = "ordenes")
 public class Orden {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String numero;
     private Date fechaCreaction;
     private Date fechaRecibida;
     private double total;
+
+    @ManyToOne
+    private Usuario usuario;
+
+    @OneToOne(mappedBy = "orden")
+    private detalleOrden DetalleOrden;
 
     public Orden(){
 
@@ -70,5 +82,22 @@ public class Orden {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public detalleOrden getDetalleOrden() {
+        return DetalleOrden;
+    }
+
+    public void setDetalleOrden(detalleOrden detalleOrden) {
+        DetalleOrden = detalleOrden;
     }
 }

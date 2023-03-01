@@ -1,6 +1,12 @@
 package com.proyecto.poryectoMarketing.Model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "productos")
 public class Productos {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private String descripcion;
@@ -8,22 +14,29 @@ public class Productos {
     private String precio;
     private String cantidad;
 
+    @ManyToOne
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Productos(){
 
     }
 
-    public Productos(Integer id,
-                     String nombre,
-                     String descripcion,
-                     String imagen,
-                     String precio,
-                     String cantidad) {
+    public Productos(Integer id, String nombre, String descripcion, String imagen, String precio, String cantidad, Usuario usuario) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagen = imagen;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.usuario = usuario;
     }
 
     @Override

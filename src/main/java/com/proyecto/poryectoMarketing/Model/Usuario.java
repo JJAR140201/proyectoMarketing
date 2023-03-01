@@ -1,7 +1,14 @@
 package com.proyecto.poryectoMarketing.Model;
 
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private String apellido;
@@ -11,6 +18,12 @@ public class Usuario {
     private String telefono;
     private String tipo;
     private String contraseña;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Productos> productosList;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Orden> ordenes;
 
     public Usuario(){
 
@@ -124,5 +137,11 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
+    public List<Productos> getProductosList() {
+        return productosList;
+    }
 
+    public void setProductosList(List<Productos> productosList) {
+        this.productosList = productosList;
+    }
 }

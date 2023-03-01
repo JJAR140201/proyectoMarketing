@@ -1,11 +1,23 @@
 package com.proyecto.poryectoMarketing.Model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "detalles")
 public class detalleOrden {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer nombre;
     private Integer cantidad;
     private Integer precio;
     private Integer total;
+
+    @OneToOne
+    private Productos productos;
+
+    @OneToOne
+    private Orden orden;
 
     public detalleOrden(){
 
@@ -67,5 +79,21 @@ public class detalleOrden {
 
     public void setTotal(Integer total) {
         this.total = total;
+    }
+
+    public Productos getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Productos productos) {
+        this.productos = productos;
+    }
+
+    public Orden getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Orden orden) {
+        this.orden = orden;
     }
 }
