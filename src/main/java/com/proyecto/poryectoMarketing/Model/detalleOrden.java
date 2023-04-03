@@ -1,6 +1,6 @@
 package com.proyecto.poryectoMarketing.Model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "detalles")
@@ -13,7 +13,7 @@ public class detalleOrden {
     private Integer precio;
     private Integer total;
 
-    @OneToOne
+    @ManyToOne
     private Productos productos;
 
     @OneToOne
