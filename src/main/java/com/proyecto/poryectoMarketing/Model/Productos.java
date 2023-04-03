@@ -1,7 +1,5 @@
 package com.proyecto.poryectoMarketing.Model;
-
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 @Entity
 @Table(name = "productos")
 public class Productos {

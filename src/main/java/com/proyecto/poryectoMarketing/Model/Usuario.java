@@ -1,6 +1,6 @@
 package com.proyecto.poryectoMarketing.Model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.List;
 
